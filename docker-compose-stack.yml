@@ -1,11 +1,11 @@
 version: '3'
 services:
   quotes:
-    image: quotes:latest
+    image: gearpawarit/quotes:latest
     networks:
       - simple-network
   api:
-    image: api:latest
+    image: gearpawarit/api:latest
     environment:
       - "QUOTES_API=http://quotes:5000"
     depends_on:
@@ -15,13 +15,13 @@ services:
     networks:
       - simple-network
   frontend:
-    image: frontend:latest
+    image: gearpawarit/frontend:latest
     deploy:
       replicas: 2
     networks:
       - simple-network
   reverse:
-    image: reverse:latest
+    image: gearpawarit/reverse:latest
     # volumes:
     #   - ./ReverseProxy/nginx:/etc/nginx
     depends_on:
